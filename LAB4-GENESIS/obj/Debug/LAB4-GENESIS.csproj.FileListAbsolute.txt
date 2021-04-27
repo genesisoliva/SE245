@@ -1,0 +1,7 @@
+C:\Users\Genny\Desktop\LAB4-GENESIS\bin\Debug\LAB4-GENESIS.exe.config
+C:\Users\Genny\Desktop\LAB4-GENESIS\bin\Debug\LAB4-GENESIS.exe
+C:\Users\Genny\Desktop\LAB4-GENESIS\bin\Debug\LAB4-GENESIS.pdb
+C:\Users\Genny\Desktop\LAB4-GENESIS\obj\Debug\LAB4-GENESIS.csprojAssemblyReference.cache
+C:\Users\Genny\Desktop\LAB4-GENESIS\obj\Debug\LAB4-GENESIS.csproj.CoreCompileInputs.cache
+C:\Users\Genny\Desktop\LAB4-GENESIS\obj\Debug\LAB4-GENESIS.exe
+C:\Users\Genny\Desktop\LAB4-GENESIS\obj\Debug\LAB4-GENESIS.pdb
