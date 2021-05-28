@@ -34,7 +34,7 @@ namespace LAB8_GENESIS
 
             int intPersonV2_ID = Convert.ToInt32(strPersonV2_ID);
 
-            AddPerson Editor = new AddPerson(intPersonV2_ID);
+            Form1 Editor = new Form1(intPersonV2_ID);
             Editor.ShowDialog();
         }
     }

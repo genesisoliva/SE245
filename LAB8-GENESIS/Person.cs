@@ -35,7 +35,7 @@ namespace LAB8_GENESIS
                 }
                 else
                 {
-                    firstname = $"ERROR: Please enter first name.";
+                    Feedback += "ERROR: Please enter first name.";
                 }
             }
 
@@ -66,7 +66,7 @@ namespace LAB8_GENESIS
                 }
                 else
                 {
-                    lastname = $"\nERROR: Please enter last name.";
+                    Feedback += "\nERROR: Please enter last name.";
                 }
             }
         }
@@ -85,7 +85,7 @@ namespace LAB8_GENESIS
                 }
                 else
                 {
-                    street1 = $"\nERROR: Enter street.";
+                    Feedback += "\nERROR: Enter street.";
                 }
             }
         }
@@ -116,7 +116,7 @@ namespace LAB8_GENESIS
                 }
                 else
                 {
-                    city = $"ERROR: Enter city.";
+                    Feedback += "ERROR: Enter city.";
                 }
             }
         }
@@ -135,7 +135,7 @@ namespace LAB8_GENESIS
                 }
                 else
                 {
-                    state = $"ERROR: Incorrect Format. Ex. RI";
+                    Feedback += "ERROR: Incorrect Format. Ex. RI";
                 }
             }
         }
@@ -154,7 +154,7 @@ namespace LAB8_GENESIS
                 }
                 else
                 {
-                    zipcode = $"\nERROR: Incorrect Format. Ex: 02910";
+                    Feedback += "\nERROR: Incorrect Format. Ex: 02910";
                 }
             }
         }
@@ -173,7 +173,7 @@ namespace LAB8_GENESIS
                 }
                 else
                 {
-                    phonenumber = $"ERROR: Enter the correct format.";
+                    Feedback += "ERROR: Enter the correct format.";
                 }
             }
         }
@@ -191,7 +191,7 @@ namespace LAB8_GENESIS
                 }
                 else
                 {
-                    email = $"ERROR: Please enter email correctlty";
+                    Feedback += "ERROR: Please enter email correctlty";
                 }
             }
         }
@@ -203,7 +203,7 @@ namespace LAB8_GENESIS
             }
             set
             {
-                email = value;
+                feedback = value;
             }
         }
 

@@ -51,7 +51,7 @@ namespace LAB8_GENESIS
         public static bool IsItFilledIn(string temp)
         {
             bool result = false;
-            if (temp.Length < 0)
+            if (temp.Length > 0)
             {
                 result = true;
             }

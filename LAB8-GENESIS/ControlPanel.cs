@@ -19,7 +19,7 @@ namespace LAB8_GENESIS
 
         private void btnAddAPerson_Click(object sender, EventArgs e)
         {
-            AddPerson temp = new AddPerson();
+            Form1 temp = new Form1();
             temp.Show();
         }
 

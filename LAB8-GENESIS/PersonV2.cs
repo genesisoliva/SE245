@@ -28,7 +28,7 @@ namespace LAB8_GENESIS
                     }
                     else
                     {
-                        cellphone = $"ERROR: Enter the correct format.";
+                    Feedback += "ERROR: Enter the correct format.";
                     }
                 }
 
@@ -45,7 +45,7 @@ namespace LAB8_GENESIS
                 }
 
             }
-            public string AddAPersonRecord()
+            public string AddARecord()
             {
                 string strResult = "";
 
@@ -53,7 +53,7 @@ namespace LAB8_GENESIS
 
                 Conn.ConnectionString = @GetConnected();
 
-                string strSQL = "INSERT TO Persons (FirstName, MiddleName, LastName, Street1, City, State, ZipCode, Street2, PhoneNumber, Email, CellPhone, Instagram) VALUES (@FirstName, @MiddleName, @LastName, @Street1, @City, @State, @ZipCode, @Street2, @PhoneNumber, @Email, @CellPhone, @Instagram)";
+                string strSQL = "INSERT INTO Person (FirstName, MiddleName, LastName, Street1, City, State, ZipCode, Street2, PhoneNumber, Email, CellPhone, Instagram) VALUES (@FirstName, @MiddleName, @LastName, @Street1, @City, @State, @ZipCode, @Street2, @PhoneNumber, @Email, @CellPhone, @Instagram)";
 
                 SqlCommand comm = new SqlCommand();
                 comm.CommandText = strSQL;
@@ -102,7 +102,7 @@ namespace LAB8_GENESIS
 
             SqlCommand comm = new SqlCommand();
 
-            /*FIX*/String strSQL = "SELECT PersonV2_ID, LastName, PhoneNumber, CellPhone FROM Persons WHERE 0=0";
+            String strSQL = "SELECT PersonV2_ID, LastName, PhoneNumber, CellPhone FROM Person WHERE 0=0";
 
             if (strLastName.Length > 0)
             {
@@ -144,7 +144,7 @@ namespace LAB8_GENESIS
             string strConn = GetConnected();
 
             string sqlString =
-           "SELECT * FROM Persons WHERE PersonvV2_ID = @PersonV2_ID;";
+           "SELECT * FROM Person WHERE PersonV2_ID = @PersonV2_ID;";
 
             conn.ConnectionString = strConn;
 
