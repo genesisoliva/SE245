@@ -1,0 +1,12 @@
+E:\LAB8-GENESIS\bin\Debug\LAB8-GENESIS.exe.config
+E:\LAB8-GENESIS\bin\Debug\LAB8-GENESIS.exe
+E:\LAB8-GENESIS\bin\Debug\LAB8-GENESIS.pdb
+E:\LAB8-GENESIS\obj\Debug\LAB8-GENESIS.csprojAssemblyReference.cache
+E:\LAB8-GENESIS\obj\Debug\LAB8_GENESIS.ControlPanel.resources
+E:\LAB8-GENESIS\obj\Debug\LAB8_GENESIS.Properties.Resources.resources
+E:\LAB8-GENESIS\obj\Debug\LAB8_GENESIS.Search.resources
+E:\LAB8-GENESIS\obj\Debug\LAB8-GENESIS.csproj.GenerateResource.cache
+E:\LAB8-GENESIS\obj\Debug\LAB8-GENESIS.csproj.CoreCompileInputs.cache
+E:\LAB8-GENESIS\obj\Debug\LAB8-GENESIS.exe
+E:\LAB8-GENESIS\obj\Debug\LAB8-GENESIS.pdb
+E:\LAB8-GENESIS\obj\Debug\LAB8_GENESIS.AddPerson.resources
