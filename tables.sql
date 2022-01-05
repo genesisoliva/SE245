@@ -63,11 +63,11 @@ CREATE TABLE zavarovanje(
     zavarovalnica_idZavarovalnica INT NOT NULL,
     tipZavarovanje_idTipZavarovanje INT NOT NULL,
 
-ALTER TABLE zavarovanje ADD CONSTRAINT fk_zavarovanje_zavarovalnica FOREIGN KEY(zavarovalnica_idZavarovalnica)
-REFERENCES zavarovalnica (idZavarovalnica) ON DELETE NO ACTION ON UPDATE NO ACTION;
+CONSTRAINT fk_zavarovanje_zavarovalnica FOREIGN KEY(zavarovalnica_idZavarovalnica)
+REFERENCES zavarovalnica (idZavarovalnica) ON DELETE NO ACTION ON UPDATE NO ACTION,
 
-ALTER TABLE zavarovanje ADD CONSTRAINT fk_zavarovanje_tipZavarovanje FOREIGN KEY (tipZavarovanje_idTipZavarovanje)
-REFERENCES tipZavarovanje (idTipZavarovanje) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ CONSTRAINT fk_zavarovanje_tipZavarovanje FOREIGN KEY (tipZavarovanje_idTipZavarovanje)
+REFERENCES tipZavarovanje (idTipZavarovanje) ON DELETE NO ACTION ON UPDATE NO ACTION
 );
 
 CREATE TABLE oseba(
@@ -79,18 +79,18 @@ CREATE TABLE oseba(
     spol INT NOT NULL,
     jePacient TINYINT(1) NOT NULL,
     ePosta VARCHAR(45),
-    zavarovanje_stZavarovanje VARCHAR(9) NULL
+    zavarovanje_stZavarovanje VARCHAR(9) NULL,
 
-ALTER TABLE oseba ADD CONSTRAINT fk_oseba_zavarovanje FOREIGN KEY (zavarovanje_stZavarovanje)
-REFERENCES zavarovanje(stZavarovanje) ON DELETE NO ACTION ON UPDATE NO ACTION;
+CONSTRAINT fk_oseba_zavarovanje FOREIGN KEY (zavarovanje_stZavarovanje)
+REFERENCES zavarovanje(stZavarovanje) ON DELETE NO ACTION ON UPDATE NO ACTION
 );
 
 CREATE TABLE zdravljenje(
 	idZdravljenje INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    oseba_EMSO CHAR(13) NOT NULL
+    oseba_EMSO CHAR(13) NOT NULL,
 
-ALTER TABLE zdravljenje ADD CONSTRAINT fk_zdravljenje_oseba FOREIGN KEY (oseba_EMSO)
-REFERENCES oseba (EMSO) ON DELETE NO ACTION ON UPDATE NO ACTION;
+CONSTRAINT fk_zdravljenje_oseba FOREIGN KEY (oseba_EMSO)
+REFERENCES oseba (EMSO) ON DELETE NO ACTION ON UPDATE NO ACTION
 );
 
 CREATE TABLE tipBolezen(
@@ -105,13 +105,13 @@ CREATE TABLE bolezen(
     konec DATETIME NULL,
     opomba VARCHAR(255),
     zdravljenje_idZdravljenje INT NOT NULL,
-    tipBolezen_idTipBolezen INT NOT NULL
+    tipBolezen_idTipBolezen INT NOT NULL,
 
-ALTER TABLE bolezen ADD CONSTRAINT fk_bolezen_zdravljenje FOREIGN KEY (zdravljenje_idZdravljenje)
-REFERENCES zdravljenje (idZdravljenje) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ CONSTRAINT fk_bolezen_zdravljenje FOREIGN KEY (zdravljenje_idZdravljenje)
+REFERENCES zdravljenje (idZdravljenje) ON DELETE NO ACTION ON UPDATE NO ACTION
 
-ALTER TABLE bolezen ADD CONSTRAINT fk_bolezen_tipBolezen FOREIGN KEY (tipBolezen_idTipBolezen)
-REFERENCES tipBolezen (idTipBolezen) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ CONSTRAINT fk_bolezen_tipBolezen FOREIGN KEY (tipBolezen_idTipBolezen)
+REFERENCES tipBolezen (idTipBolezen) ON DELETE NO ACTION ON UPDATE NO ACTION
 
 );
 
@@ -120,19 +120,19 @@ CREATE TABLE oddelek(
     imeOddelek VARCHAR(127) NOT NULL,
     nadstropje VARCHAR(45) NOT NULL,
     soba INT NOT NULL,
-    naslov_idNaslov INT NOT NULL
+    naslov_idNaslov INT NOT NULL,
 
-ALTER TABLE oddelek ADD CONSTRAINT fk_oddelek_naslov FOREIGN KEY (naslov_idNaslov)
-REFERENCES naslov (idNaslov) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ CONSTRAINT fk_oddelek_naslov FOREIGN KEY (naslov_idNaslov)
+REFERENCES naslov (idNaslov) ON DELETE NO ACTION ON UPDATE NO ACTION
 
 );
 
 CREATE TABLE postelja(
 	idPostelja INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    oddelek_idOddelek INT NOT NULL
+    oddelek_idOddelek INT NOT NULL,
 
-ALTER TABLE postelja ADD CONSTRAINT fk_postelja_oddelek FOREIGN KEY (oddelek_idOddelek)
-REFERENCES oddelek (idOddelek) ON DELETE NO ACTION ON UPDATE NO ACTION;
+CONSTRAINT fk_postelja_oddelek FOREIGN KEY (oddelek_idOddelek)
+REFERENCES oddelek (idOddelek) ON DELETE NO ACTION ON UPDATE NO ACTION
 
 );
 
@@ -141,13 +141,13 @@ CREATE TABLE zdravljenje_postelja(
     datumCasZacetek DATETIME NOT NULL,
     datumCasKonec DATETIME NULL,
     zdravljenje_idZdravljenje INT NOT NULL,
-    postelja_idPostelja INT NOT NULL
+    postelja_idPostelja INT NOT NULL,
 
-ALTER TABLE zdravljenje_postelja ADD CONSTRAINT fk_zdravljenje_postelja_zdravljenje FOREIGN KEY (zdravljenje_idZdravljenje)
-REFERENCES zdravljenje (idZdravljenje) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ CONSTRAINT fk_zdravljenje_postelja_zdravljenje FOREIGN KEY (zdravljenje_idZdravljenje)
+REFERENCES zdravljenje (idZdravljenje) ON DELETE NO ACTION ON UPDATE NO ACTION.
 
-ALTER TABLE zdravljenje_postelja ADD CONSTRAINT fk_zdravljenje_postelja_postelja FOREIGN KEY (postelja_idPostelja)
-REFERENCES postelja (idPostelja) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ CONSTRAINT fk_zdravljenje_postelja_postelja FOREIGN KEY (postelja_idPostelja)
+REFERENCES postelja (idPostelja) ON DELETE NO ACTION ON UPDATE NO ACTION
 
 );
 
@@ -167,19 +167,19 @@ CREATE TABLE osebje(
     oddelek_idOddelek INT NOT NULL,
     tipOsebje_idTipOsebje INT NOT NULL,
     oseba_EMSO CHAR(13) NOT NULL,
-    specializacija_idSpecializacija INT NULL
+    specializacija_idSpecializacija INT NULL,
 
-ALTER TABLE osebje ADD CONSTRAINT fk_osebje_oddelek FOREIGN KEY (oddelek_idOddelek)
-REFERENCES oddelek (idOddelek) ON DELETE NO ACTION ON UPDATE NO ACTION;
+CONSTRAINT fk_osebje_oddelek FOREIGN KEY (oddelek_idOddelek)
+REFERENCES oddelek (idOddelek) ON DELETE NO ACTION ON UPDATE NO ACTION,
 
-ALTER TABLE osebje ADD CONSTRAINT fk_osebje_tipOsebje FOREIGN KEY (tipOsebje_idTipOsebje)
-REFERENCES tipOsebje (idTipOsebje) ON DELETE NO ACTION ON UPDATE NO ACTION;
+CONSTRAINT fk_osebje_tipOsebje FOREIGN KEY (tipOsebje_idTipOsebje)
+REFERENCES tipOsebje (idTipOsebje) ON DELETE NO ACTION ON UPDATE NO ACTION,
 
-ALTER TABLE osebje ADD CONSTRAINT fk_osebje_oseba FOREIGN KEY (oseba_EMSO)
-REFERENCES oseba (EMSO) ON DELETE NO ACTION ON UPDATE NO ACTION;
+CONSTRAINT fk_osebje_oseba FOREIGN KEY (oseba_EMSO)
+REFERENCES oseba (EMSO) ON DELETE NO ACTION ON UPDATE NO ACTION,
 
-ALTER TABLE osebje ADD CONSTRAINT fk_osebje_specializacija FOREIGN KEY (specializacija_idSpecializacija)
-REFERENCES specializacija (idSpecializacija) ON DELETE NO ACTION ON UPDATE NO ACTION;
+CONSTRAINT fk_osebje_specializacija FOREIGN KEY (specializacija_idSpecializacija)
+REFERENCES specializacija (idSpecializacija) ON DELETE NO ACTION ON UPDATE NO ACTION
 
 );
 
@@ -187,32 +187,31 @@ CREATE TABLE pregled(
 	idPregled INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     casDatumPregled DATETIME NOT NULL,
     osebje_idOsebje INT NOT NULL,
-    oseba_EMSO CHAR(13) NOT NULL
+    oseba_EMSO CHAR(13) NOT NULL,
+ CONSTRAINT fk_pregled_osebje FOREIGN KEY (osebje_idOsebje)
+REFERENCES osebje (idOsebje) ON DELETE NO ACTION ON UPDATE NO ACTION,
 
-ALTER TABLE pregled ADD CONSTRAINT fk_pregled_osebje FOREIGN KEY (osebje_idOsebje)
-REFERENCES osebje (idOsebje) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
-ALTER TABLE pregled ADD CONSTRAINT fk_pregled_oseba FOREIGN KEY (oseba_EMSO)
-REFERENCES oseba (EMSO) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ CONSTRAINT fk_pregled_oseba FOREIGN KEY (oseba_EMSO)
+REFERENCES oseba (EMSO) ON DELETE NO ACTION ON UPDATE NO ACTION
 );
 
 CREATE TABLE klinicniPrimer(
 	idKlinicniPrimer INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     zdravljenje_idZdravljenje INT NOT NULL,
-    osebje_idOsebje INT
+    osebje_idOsebje INT,
 
-ALTER TABLE klinicniPrimer ADD CONSTRAINT fk_klinicniPrimer_zdravljenje FOREIGN KEY (zdravljenje_idZdravljenje)
-REFERENCES zdravljenje (idZdravljenje) ON DELETE NO ACTION ON UPDATE NO ACTION;
+CONSTRAINT fk_klinicniPrimer_zdravljenje FOREIGN KEY (zdravljenje_idZdravljenje)
+REFERENCES zdravljenje (idZdravljenje) ON DELETE NO ACTION ON UPDATE NO ACTION
 
 );
 
 
 CREATE TABLE racun(
 	idRacun CHAR(9) NOT NULL PRIMARY KEY,
-    klinicniPrimer_idKlinicniPrimer INT NOT NULL
+    klinicniPrimer_idKlinicniPrimer INT NOT NULL,
 
-ALTER TABLE racun ADD CONSTRAINT fk_racun_klinicniPrimer FOREIGN KEY (klinicniPrimer_idKlinicniPrimer)
-REFERENCES klinicniPrimer (idKlinicniPrimer) ON DELETE NO ACTION ON UPDATE NO ACTION;
+CONSTRAINT fk_racun_klinicniPrimer FOREIGN KEY (klinicniPrimer_idKlinicniPrimer)
+REFERENCES klinicniPrimer (idKlinicniPrimer) ON DELETE NO ACTION ON UPDATE NO ACTION
 
 );
 
@@ -227,16 +226,16 @@ CREATE TABLE opravljenaStoritev(
     datum DATE NOT NULL,
     storitev_idStoritev INT NOT NULL,
     osebje_idOsebje INT NOT NULL,
-    racun_idRacun CHAR(9) NOT NULL
+    racun_idRacun CHAR(9) NOT NULL,
 
-ALTER TABLE opravljenaStoritev ADD CONSTRAINT fk_opravljenaStoritev_racun FOREIGN KEY (racun_idRacun)
-REFERENCES racun (idRacun) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ CONSTRAINT fk_opravljenaStoritev_racun FOREIGN KEY (racun_idRacun)
+REFERENCES racun (idRacun) ON DELETE NO ACTION ON UPDATE NO ACTION,
 
-ALTER TABLE opravljenaStoritev ADD CONSTRAINT fk_opravljenaStoritev_storitev FOREIGN KEY (storitev_idStoritev)
-REFERENCES storitev (idStoritev) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ CONSTRAINT fk_opravljenaStoritev_storitev FOREIGN KEY (storitev_idStoritev)
+REFERENCES storitev (idStoritev) ON DELETE NO ACTION ON UPDATE NO ACTION,
 
-ALTER TABLE opravljenaStoritev ADD CONSTRAINT fk_opravljenaStoritev_osebje FOREIGN KEY (osebje_idOsebje)
-REFERENCES osebje (idOsebje) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ CONSTRAINT fk_opravljenaStoritev_osebje FOREIGN KEY (osebje_idOsebje)
+REFERENCES osebje (idOsebje) ON DELETE NO ACTION ON UPDATE NO ACTION
 );
 
 CREATE TABLE tipBivanje(
@@ -250,16 +249,16 @@ CREATE TABLE bivanje(
     datumDo DATE NULL,
     naslov_idNaslov INT NOT NULL,
     tipBivanje_idTipBivanje INT NOT NULL,
-    oseba_EMSO CHAR(13) NOT NULL
+    oseba_EMSO CHAR(13) NOT NULL,
 
-ALTER TABLE bivanje ADD CONSTRAINT fk_bivanje_naslov FOREIGN KEY (naslov_idNaslov)
-REFERENCES naslov (idNaslov) ON DELETE NO ACTION ON UPDATE NO ACTION;
+CONSTRAINT fk_bivanje_naslov FOREIGN KEY (naslov_idNaslov)
+REFERENCES naslov (idNaslov) ON DELETE NO ACTION ON UPDATE NO ACTION,
 
-ALTER TABLE bivanje ADD CONSTRAINT fk_bivanje_tipBivanje FOREIGN KEY (tipBivanje_idTipBivanje)
-REFERENCES tipBivanje (idTipBivanje) ON DELETE NO ACTION ON UPDATE NO ACTION;
+CONSTRAINT fk_bivanje_tipBivanje FOREIGN KEY (tipBivanje_idTipBivanje)
+REFERENCES tipBivanje (idTipBivanje) ON DELETE NO ACTION ON UPDATE NO ACTION,
 
-ALTER TABLE bivanje ADD CONSTRAINT fk_bivanje_oseba FOREIGN KEY (oseba_EMSO)
-REFERENCES oseba (EMSO) ON DELETE NO ACTION ON UPDATE NO ACTION;
+CONSTRAINT fk_bivanje_oseba FOREIGN KEY (oseba_EMSO)
+REFERENCES oseba (EMSO) ON DELETE NO ACTION ON UPDATE NO ACTION
 
 );
 
@@ -268,10 +267,10 @@ CREATE TABLE cena(
 	idCena INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     datum DATE NOT NULL,
     cena DECIMAL(9,2),
-    storitev_idStoritev INT NOT NULL
+    storitev_idStoritev INT NOT NULL,
 
-ALTER TABLE cena ADD CONSTRAINT fk_cena_storitev FOREIGN KEY (storitev_idStoritev)
-REFERENCES storitev (idStoritev) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ CONSTRAINT fk_cena_storitev FOREIGN KEY (storitev_idStoritev)
+REFERENCES storitev (idStoritev) ON DELETE NO ACTION ON UPDATE NO ACTION
 
 );
 
