@@ -14,11 +14,20 @@ CREATE TABLE obcina(
 );
 
 CREATE TABLE kraj(
-	idKraj INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    idKraj INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     imeKraj VARCHAR(45) NOT NULL,
     drzava_idDrzava INT NOT NULL,
     posta_postnaStevilka INT NOT NULL,
-    obcina_idObcina INT NOT NULL
+    obcina_idObcina INT NOT NULL,
+
+    CONSTRAINT fk_kraj_drzava FOREIGN KEY (drzava_idDrzava)
+    REFERENCES drzava (idDrzava) ON DELETE NO ACTION ON UPDATE NO ACTION,
+
+    CONSTRAINT fk_kraj_posta FOREIGN KEY (posta_postnaStevilka)
+    REFERENCES posta (postnaStevilka) ON DELETE NO ACTION ON UPDATE NO ACTION,
+
+    CONSTRAINT fk_kraj_obcina FOREIGN KEY (obcina_idObcina)
+    REFERENCES obcina (idObcina) ON DELETE NO ACTION ON UPDATE NO ACTION
 );
 
 ALTER TABLE kraj ADD CONSTRAINT fk_kraj_drzava FOREIGN KEY (drzava_idDrzava) 
