@@ -34,11 +34,11 @@ CREATE TABLE naslov(
 	idNaslov INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     ulica VARCHAR(45) NOT NULL,
     hisnaStevilka VARCHAR(6) NOT NULL,
-    kraj_idKraj INT NOT NULL
-);
+    kraj_idKraj INT NOT NULL,
 
-ALTER TABLE naslov ADD CONSTRAINT fk_naslov_kraj FOREIGN KEY (kraj_idKraj)
-REFERENCES kraj (idKraj) ON DELETE NO ACTION ON UPDATE NO ACTION;
+CONSTRAINT fk_naslov_kraj FOREIGN KEY (kraj_idKraj)
+REFERENCES kraj (idKraj) ON DELETE NO ACTION ON UPDATE NO ACTION
+);
 
 CREATE TABLE zavarovalnica(
 	idZavarovalnica INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
