@@ -44,9 +44,8 @@ CREATE TABLE IF NOT EXISTS zavarovalnica(
 	idZavarovalnica INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     imeZavarovalnica VARCHAR(45),
     naslov_idNaslov INT NOT NULL,
-
-ALTER TABLE zavarovalnica ADD CONSTRAINT fk_zavarovalnica_naslov FOREIGN KEY (naslov_idNaslov)
-REFERENCES naslov (idNaslov) ON DELETE NO ACTION ON UPDATE NO ACTION;
+CONSTRAINT fk_zavarovalnica_naslov FOREIGN KEY (naslov_idNaslov)
+REFERENCES naslov (idNaslov) ON DELETE NO ACTION ON UPDATE NO ACTION
 
 );
 
@@ -108,7 +107,7 @@ CREATE TABLE IF NOT EXISTS bolezen(
     tipBolezen_idTipBolezen INT NOT NULL,
 
  CONSTRAINT fk_bolezen_zdravljenje FOREIGN KEY (zdravljenje_idZdravljenje)
-REFERENCES zdravljenje (idZdravljenje) ON DELETE NO ACTION ON UPDATE NO ACTION
+REFERENCES zdravljenje (idZdravljenje) ON DELETE NO ACTION ON UPDATE NO ACTION,
 
  CONSTRAINT fk_bolezen_tipBolezen FOREIGN KEY (tipBolezen_idTipBolezen)
 REFERENCES tipBolezen (idTipBolezen) ON DELETE NO ACTION ON UPDATE NO ACTION
@@ -144,7 +143,7 @@ CREATE TABLE IF NOT EXISTS zdravljenje_postelja(
     postelja_idPostelja INT NOT NULL,
 
  CONSTRAINT fk_zdravljenje_postelja_zdravljenje FOREIGN KEY (zdravljenje_idZdravljenje)
-REFERENCES zdravljenje (idZdravljenje) ON DELETE NO ACTION ON UPDATE NO ACTION.
+REFERENCES zdravljenje (idZdravljenje) ON DELETE NO ACTION ON UPDATE NO ACTION,
 
  CONSTRAINT fk_zdravljenje_postelja_postelja FOREIGN KEY (postelja_idPostelja)
 REFERENCES postelja (idPostelja) ON DELETE NO ACTION ON UPDATE NO ACTION
