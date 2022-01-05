@@ -431,16 +431,18 @@ INSERT INTO racun VALUES
     ('0000009', 9),
     ('0000010', 10);
 
-CREATE TABLE IF NOT EXISTS storitev(
-	idStoritev INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    naziv VARCHAR(45) NOT NULL
+CREATE TABLE IF NOT EXISTS services (
+	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    service VARCHAR(45) NOT NULL
 );
-INSERT INTO storitev VALUES 
+INSERT INTO services VALUES 
 	(null, 'Pregled srca z ultrazvokom'),
     (null, 'Izdelava mavca'),
     (null, 'Operacija srca'),
     (null, 'Operacija kolena'),
     (null, 'Odstranitev ledvičnih kamnov');
+
+
 CREATE TABLE IF NOT EXISTS opravljenaStoritev(
 	idOpravljenaStoritev INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     datum DATE NOT NULL,
@@ -501,15 +503,15 @@ INSERT INTO bivanje VALUES
     (null, '2018-01-01', null, 1, 1, '2909995500113'),
     (null, '2018-01-01', null, 1, 2, '2909995500117');
 
-CREATE TABLE IF NOT EXISTS cena (
-	idCena INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+CREATE TABLE IF NOT EXISTS prices (
+	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     datum DATE NOT NULL,
-    cena DECIMAL(9,2),
-    storitev_idStoritev INT NOT NULL,
-    CONSTRAINT fk_cena_storitev FOREIGN KEY (storitev_idStoritev)
-    REFERENCES storitev (idStoritev) ON DELETE NO ACTION ON UPDATE NO ACTION
+    price DECIMAL(9,2),
+    service_id INT NOT NULL,
+    CONSTRAINT fk_price_service FOREIGN KEY (service_id)
+    REFERENCES services (id) ON DELETE NO ACTION ON UPDATE NO ACTION
 );
-INSERT INTO cena VALUES 
+INSERT INTO prices VALUES 
 	(null, '2018-10-22', 20.55, 1),
     (null, '2018-10-22', 22.55, 1),
     (null, '2018-10-22', 222.55, 2),
