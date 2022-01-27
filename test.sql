@@ -1,15 +1,21 @@
-CREATE TABLE parent (
-    id INT PRIMARY KEY,
-    FirstName VARCHAR(50) NOT NULL,
-    LastName VARCHAR(50) NOT NULL
-);
-
 CREATE TABLE child (
     id INT PRIMARY KEY,
-    FirstName VARCHAR(50) NOT NULL,
-    LastName VARCHAR(50) NOT NULL,
-    parent1 INT,
-    parent2 INT,
-    FOREIGN KEY (parent1) REFERENCES Parent (id),
-    FOREIGN KEY (parent2) REFERENCES Parent (id)
+    firstName VARCHAR(50) NOT NULL,
+    middleName VARCHAR(50),
+    lastName VARCHAR(50),
+    dateofbirthday DATE,
+    sex*,
+    primaryLanguage*,
+    secondaryLanguage*,
+    street,
+    city/town,
+    state*
+    zipcode,
+    schoolname/programname,
+    phone,
+    street,
+    city/town,
+    state*
+    zipcode,
+
 );
