@@ -1,37 +1,15 @@
-CREATE TABLE IF NOT EXISTS child (
-    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    firstname VARCHAR(45) NOT NULL,
-    middlename VARCHAR(45),
-    lastname VARCHAR(45) NOT NULL,
-
-    CONSTRAINT fk_naslov_kraj FOREIGN KEY (kraj_idKraj)
-    REFERENCES kraj (idKraj) ON DELETE NO ACTION ON UPDATE NO ACTION
+CREATE TABLE parent (
+    id INT PRIMARY KEY,
+    FirstName VARCHAR(50) NOT NULL,
+    LastName VARCHAR(50) NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS parent (
-    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    firstname VARCHAR(45) NOT NULL,
-    middlename VARCHAR(45),
-    lastname VARCHAR(45) NOT NULL,
-
-    CONSTRAINT fk_naslov_kraj FOREIGN KEY (kraj_idKraj)
-    REFERENCES kraj (idKraj) ON DELETE NO ACTION ON UPDATE NO ACTION
-);
-
-CREATE TABLE IF NOT EXISTS relationship (
-    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    type VARCHAR(45) NOT NULL,
-
-    CONSTRAINT fk_naslov_kraj FOREIGN KEY (kraj_idKraj)
-    REFERENCES kraj (idKraj) ON DELETE NO ACTION ON UPDATE NO ACTION
-);
-
-CREATE TABLE IF NOT EXISTS family (
-    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    parentid INT NOT NULL,
-    childid INT NOT NULL,
-    type INT NOT NULL,
-
-    CONSTRAINT fk_naslov_kraj FOREIGN KEY (kraj_idKraj)
-    REFERENCES kraj (idKraj) ON DELETE NO ACTION ON UPDATE NO ACTION
+CREATE TABLE child (
+    id INT PRIMARY KEY,
+    FirstName VARCHAR(50) NOT NULL,
+    LastName VARCHAR(50) NOT NULL,
+    parent1 INT,
+    parent2 INT,
+    FOREIGN KEY (parent1) REFERENCES Parent (id),
+    FOREIGN KEY (parent2) REFERENCES Parent (id)
 );
