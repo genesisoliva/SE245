@@ -1,0 +1,206 @@
+CREATE TABLE `alifa_year` (
+  `year_id` int(10) NOT NULL,
+  `year_name` varchar(15) NOT NULL,
+  `year_status` int(1) NOT NULL DEFAULT '0' COMMENT '0=Tidak Aktif',
+  `year_update` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `alifa_users` (
+  `user_username` varchar(30) NOT NULL,
+  `user_password` varchar(100) NOT NULL,
+  `user_name` varchar(50) NOT NULL,
+  `user_mobile` varchar(12) NOT NULL,
+  `user_email` varchar(50) NOT NULL,
+  `user_status` enum('Aktif','Tidak Aktif') NOT NULL DEFAULT 'Aktif',
+  `user_avatar` varchar(100) DEFAULT NULL COMMENT 'Avatar',
+  `user_level` enum('Admin','Operator') NOT NULL DEFAULT 'Operator' COMMENT 'Level Admin',
+  `user_date_create` datetime NOT NULL,
+  `user_date_update` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `alifa_team` (
+  `team_id` int(2) NOT NULL,
+  `team_name` varchar(50) NOT NULL,
+  `team_update` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `alifa_student` (
+  `student_id` int(10) NOT NULL,
+  `paket_id` int(2) NOT NULL,
+  `year_id` int(10) NOT NULL,
+  `office_id` int(5) NOT NULL,
+  `student_name` varchar(50) NOT NULL,
+  `student_birth` varchar(30) NOT NULL,
+  `student_date` date NOT NULL,
+  `student_gender` varchar(15) NOT NULL,
+  `student_agama` varchar(10) NOT NULL,
+  `provinsi_id` char(2) NOT NULL,
+  `kabupaten_id` char(4) NOT NULL,
+  `kecamatan_id` char(7) NOT NULL,
+  `desa_id` char(10) NOT NULL,
+  `student_address` varchar(100) NOT NULL,
+  `student_phone` varchar(12) NOT NULL,
+  `student_email` varchar(30) NOT NULL,
+  `student_parent` varchar(50) NOT NULL,
+  `student_image` varchar(100) DEFAULT NULL,
+  `student_date_register` datetime NOT NULL,
+  `student_update` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `alifa_social` (
+  `social_id` int(2) NOT NULL,
+  `social_name` varchar(30) NOT NULL,
+  `social_class` varchar(100) NOT NULL,
+  `social_url` text NOT NULL,
+  `social_update` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `alifa_slider` (
+  `slider_id` int(2) NOT NULL,
+  `slider_image` varchar(100) NOT NULL,
+  `slider_update` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `alifa_setting` (
+  `setting_id` smallint(2) NOT NULL,
+  `setting_name` varchar(50) NOT NULL,
+  `setting_address` varchar(100) NOT NULL,
+  `setting_phone` varchar(15) DEFAULT NULL,
+  `setting_sms` varchar(15) DEFAULT NULL,
+  `setting_email` varchar(50) DEFAULT NULL,
+  `setting_pin` varchar(10) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `alifa_provinsi` (
+  `provinsi_id` char(2) NOT NULL,
+  `provinsi_nama` char(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `alifa_promo_category` (
+  `promo_category_id` int(2) NOT NULL,
+  `promo_category_name` varchar(50) NOT NULL,
+  `promo_category_seo` text NOT NULL,
+  `promo_category_update` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `alifa_promo` (
+  `promo_id` int(10) NOT NULL,
+  `user_username` varchar(30) NOT NULL,
+  `promo_category_id` int(2) NOT NULL,
+  `promo_name` varchar(100) NOT NULL,
+  `promo_image` varchar(100) DEFAULT NULL,
+  `promo_post` datetime NOT NULL,
+  `promo_update` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `alifa_paket` (
+  `paket_id` int(2) NOT NULL,
+  `user_username` varchar(30) NOT NULL,
+  `paket_name` varchar(50) NOT NULL,
+  `paket_seo` text NOT NULL,
+  `paket_schedule` varchar(50) NOT NULL,
+  `paket_desc` text NOT NULL,
+  `paket_update` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `alifa_office` (
+  `office_id` int(5) NOT NULL,
+  `branch_id` int(2) NOT NULL,
+  `office_name` varchar(50) NOT NULL,
+  `office_address` varchar(100) NOT NULL,
+  `office_phone` varchar(15) NOT NULL,
+  `office_mobile` varchar(15) NOT NULL,
+  `office_status` varchar(15) NOT NULL COMMENT 'Pusat, Cabang',
+  `office_email` varchar(50) NOT NULL COMMENT 'Email',
+  `office_lat` text NOT NULL,
+  `office_long` text NOT NULL,
+  `office_update` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `alifa_meta` (
+  `meta_id` int(2) NOT NULL,
+  `meta_name` varchar(50) NOT NULL COMMENT 'Nama Website',
+  `meta_desc` text,
+  `meta_keyword` text,
+  `meta_author` varchar(100) DEFAULT NULL,
+  `meta_developer` varchar(50) DEFAULT NULL,
+  `meta_robots` varchar(50) DEFAULT NULL,
+  `meta_googlebots` varchar(50) DEFAULT NULL,
+  `meta_update` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `alifa_message` (
+  `message_id` int(10) NOT NULL,
+  `message_name` varchar(50) NOT NULL,
+  `message_email` varchar(50) NOT NULL,
+  `message_subject` varchar(70) NOT NULL,
+  `message_message` text,
+  `message_status` int(1) DEFAULT '1' COMMENT '1. Belum 2. Sudah',
+  `message_post` date NOT NULL COMMENT 'Tgl. Kirim',
+  `message_read` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `alifa_menu` (
+  `menu_id` int(5) NOT NULL,
+  `menu_name` varchar(50) NOT NULL,
+  `menu_desc` text NOT NULL,
+  `menu_level` varchar(15) NOT NULL,
+  `menu_photo` varchar(100) DEFAULT NULL,
+  `menu_update` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `alifa_kabupaten` (
+  `kabupaten_id` char(4) NOT NULL,
+  `provinsi_id` char(2) NOT NULL,
+  `kabupaten_nama` char(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `alifa_img_about` (
+  `img_about_id` int(2) NOT NULL,
+  `img_about_image` varchar(100) NOT NULL,
+  `img_about_update` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `alifa_gallery_detail` (
+  `detail_id` int(10) NOT NULL,
+  `gallery_id` int(10) NOT NULL,
+  `detail_image` varchar(100) NOT NULL,
+  `detail_update` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `alifa_gallery` (
+  `gallery_id` int(10) NOT NULL,
+  `category_gallery_id` int(2) NOT NULL,
+  `user_username` varchar(30) NOT NULL,
+  `gallery_name` varchar(100) NOT NULL,
+  `gallery_seo` text NOT NULL,
+  `gallery_image` varchar(100) NOT NULL,
+  `gallery_post` datetime NOT NULL,
+  `gallery_update` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `alifa_employee` (
+  `employee_id` int(5) NOT NULL,
+  `team_id` int(2) NOT NULL COMMENT 'ID Team',
+  `employee_name` varchar(50) NOT NULL,
+  `employee_position` varchar(50) DEFAULT NULL COMMENT 'Jabatan',
+  `employee_image` varchar(100) DEFAULT NULL COMMENT 'Foto',
+  `employee_update` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `alifa_desa` (
+  `desa_id` char(10) NOT NULL,
+  `kecamatan_id` char(7) NOT NULL,
+  `desa_nama` char(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `alifa_category_gallery` (
+  `category_gallery_id` int(2) NOT NULL,
+  `category_gallery_name` varchar(50) NOT NULL,
+  `category_gallery_seo` text NOT NULL,
+  `category_gallery_update` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `alifa_category` (
+  `category_id` int(10) NOT NULL,
+  `category_no` int(2) NOT NULL DEFAULT '1',
+  `category_name` varchar(50) NOT NULL,
+  `category_seo` text NOT NULL,
+  `category_update` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `alifa_branch` (
+  `branch_id` int(2) NOT NULL,
+  `branch_name` varchar(50) NOT NULL,
+  `branch_seo` text NOT NULL,
+  `branch_update` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `alifa_article` (
+  `article_id` int(10) NOT NULL,
+  `category_id` int(10) NOT NULL,
+  `user_username` varchar(30) NOT NULL,
+  `article_title` varchar(100) NOT NULL,
+  `article_seo` text NOT NULL,
+  `article_desc` text NOT NULL,
+  `article_image` varchar(100) DEFAULT NULL,
+  `article_read` int(1) NOT NULL DEFAULT '0' COMMENT 'Banyak Baca',
+  `article_post` datetime NOT NULL COMMENT 'Tgl. Posting',
+  `article_update` datetime NOT NULL COMMENT 'Tgl. Update'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
