@@ -19,36 +19,16 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `db_admin`
+-- Database: `alansary`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_roles`
+-- Table structure for table `users`
 --
 
-CREATE TABLE `tbl_roles` (
-  `id` int(11) NOT NULL COMMENT 'role_id',
-  `role` varchar(255) DEFAULT NULL COMMENT 'role_text'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `tbl_roles`
---
-
-INSERT INTO `tbl_roles` (`id`, `role`) VALUES
-(1, 'Admin'),
-(2, 'Editor'),
-(3, 'User');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tbl_users`
---
-
-CREATE TABLE `tbl_users` (
+CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `name` varchar(255) DEFAULT NULL,
   `username` varchar(255) DEFAULT NULL,
@@ -62,10 +42,10 @@ CREATE TABLE `tbl_users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tbl_users`
+-- Dumping data for table `users`
 --
 
-INSERT INTO `tbl_users` (`id`, `name`, `username`, `email`, `password`, `mobile`, `roleid`, `isActive`, `created_at`, `updated_at`) VALUES
+INSERT INTO `users` (`id`, `name`, `username`, `email`, `password`, `mobile`, `roleid`, `isActive`, `created_at`, `updated_at`) VALUES
 (7, 'Nababur', 'Nababurbd', 'nababurbd@gmail.com', '188000e1f0fb4075ae1c659697b96296f982cdc4', '01717090233', 1, 0, '2020-03-12 16:23:01', '2020-03-12 16:23:01'),
 (12, 'Rayhan', 'Rayhan', 'rayhankabir@gmail.com', '188000e1f0fb4075ae1c659697b96296f982cdc4', '01717090233', 2, 0, '2020-03-12 18:20:24', '2020-03-12 18:20:24'),
 (15, 'Sanjia Akther', 'Sanjida', 'sanjida@gmail.com', '188000e1f0fb4075ae1c659697b96296f982cdc4', '01717090233', 2, 0, '2020-03-12 19:32:27', '2020-03-12 19:32:27'),
@@ -76,20 +56,41 @@ INSERT INTO `tbl_users` (`id`, `name`, `username`, `email`, `password`, `mobile`
 (20, 'Rased ', 'Rashed', 'rashed@gmail.com', '188000e1f0fb4075ae1c659697b96296f982cdc4', '01717090233', 2, 1, '2020-03-13 05:10:24', '2020-03-13 05:10:24'),
 (21, 'Millon ', 'Millon', 'millon@gmail.com', '05c19fb114728eabf85f47c858914ca42ddd2dae', '01717090233', 1, 1, '2020-03-13 05:11:02', '2020-03-13 05:11:02');
 
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `roles`
+--
+
+CREATE TABLE `roles` (
+  `id` int(11) NOT NULL COMMENT 'role_id',
+  `role` varchar(255) DEFAULT NULL COMMENT 'role_text'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `roles`
+--
+
+INSERT INTO `roles` (`id`, `role`) VALUES
+(1, 'Admin'),
+(2, 'Editor'),
+(3, 'User');
+
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `tbl_roles`
+-- Indexes for table `users`
 --
-ALTER TABLE `tbl_roles`
+ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tbl_users`
+-- Indexes for table `roles`
 --
-ALTER TABLE `tbl_users`
+ALTER TABLE `roles`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -97,16 +98,16 @@ ALTER TABLE `tbl_users`
 --
 
 --
--- AUTO_INCREMENT for table `tbl_roles`
+-- AUTO_INCREMENT for table `users`
 --
-ALTER TABLE `tbl_roles`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'role_id', AUTO_INCREMENT=4;
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 --
--- AUTO_INCREMENT for table `tbl_users`
+-- AUTO_INCREMENT for table `users`
 --
-ALTER TABLE `tbl_users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+ALTER TABLE `roles`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'role_id', AUTO_INCREMENT= 1;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
