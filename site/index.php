@@ -1,5 +1,6 @@
+<?php include 'inc/header.php'; ?>
+
 <?php
-include 'inc/header.php';
 
 Session::CheckSession();
 
@@ -40,76 +41,82 @@ if (isset($_GET['active'])) {
 if (isset($activeId)) {
   echo $activeId;
 }
-
-
  ?>
       <div class="card ">
         <div class="card-header">
           <h3><i class="fas fa-users mr-2"></i>User list <span class="float-right">Welcome! <strong>
             <span class="badge badge-lg badge-secondary text-white">
-<?php
-$username = Session::get('username');
-if (isset($username)) {
-  echo $username;
-}
- ?></span>
-
-          </strong></span></h3>
+              <?php
+                $username = Session::get('username');
+                if (isset($username)) {
+                echo $username;
+                }
+                ?>
+            </span>
+            </strong>
+            </span></h3>
         </div>
         <div class="card-body pr-2 pl-2">
 
           <table id="example" class="table table-striped table-bordered" style="width:100%">
                   <thead>
                     <tr>
-                      <th  class="text-center">SL</th>
-                      <th  class="text-center">Name</th>
-                      <th  class="text-center">Username</th>
-                      <th  class="text-center">Email address</th>
-                      <th  class="text-center">Mobile</th>
+                      <th colspan="12">Users</th>
+                    </tr>
+                    
+                    <tr>
+                      <th  class="text-center">ID</th>
+                      <th  class="text-center">ID</th>
+                      <th  class="text-center">Student ID</th>
+                      <th  class="text-center">Dorm Number</th>
+                      <th  class="text-center" colspan="3">Name</th>
+                      <th  class="text-center" colspan="2">Phone</th>
+                      <th  class="text-center" colspan="2">Email</th>
                       <th  class="text-center">Status</th>
                       <th  class="text-center">Created</th>
                       <th  width='25%' class="text-center">Action</th>
                     </tr>
                   </thead>
                   <tbody>
+                    
                     <?php
-
                       $allUser = $users->selectAllUserData();
-
                       if ($allUser) {
                         $i = 0;
-                        foreach ($allUser as  $value) {
+                        foreach ($allUser as $value) {
                           $i++;
-
                      ?>
 
-                      <tr class="text-center"
-                      <?php if (Session::get("id") == $value->id) {
-                        echo "style='background:#d9edf7' ";
-                      } ?>
-                      >
-
-                        <td><?php echo $i; ?></td>
-                        <td><?php echo $value->name; ?></td>
-                        <td><?php echo $value->username; ?> <br>
+                      <tr class="text-center" <?php if (Session::get("id") == $value->id) { echo "style='background:#d9edf7' ";} ?>>
+                        <td><?php echo $value->user_id; ?></td>
+                        <td><?php echo $value->user_id; ?></td>
+                        <td><?php echo $value->student_id; ?> <br>
                           <?php if ($value->roleid  == '1'){
                           echo "<span class='badge badge-lg badge-info text-white'>Admin</span>";
                         } elseif ($value->roleid == '2') {
                           echo "<span class='badge badge-lg badge-dark text-white'>Editor</span>";
                         }elseif ($value->roleid == '3') {
                             echo "<span class='badge badge-lg badge-dark text-white'>User Only</span>";
-                        } ?></td>
+                        } ?>
+                        </td>
+                        <td><?php echo $value->dorm_num; ?></td>
+                        <td><?php echo $value->name; ?></td>
+                        <td><?php echo $value->first_name; ?></td>
+                        <td><?php echo $value->middle_name; ?></td>
+                        <td><?php echo $value->last_name; ?></td>
+                        <td><span class="badge badge-lg badge-secondary text-white"><?php echo $value->phone; ?></span></td>
+                        <td><span class="badge badge-lg badge-secondary text-white"><?php echo $value->phone2; ?></span></td>
                         <td><?php echo $value->email; ?></td>
-
-                        <td><span class="badge badge-lg badge-secondary text-white"><?php echo $value->mobile; ?></span></td>
+                        <td><?php echo $value->email2; ?></td>
+                        
                         <td>
                           <?php if ($value->isActive == '0') { ?>
                           <span class="badge badge-lg badge-info text-white">Active</span>
                         <?php }else{ ?>
                     <span class="badge badge-lg badge-danger text-white">Deactive</span>
                         <?php } ?>
-
                         </td>
+                        
                         <td><span class="badge badge-lg badge-secondary text-white"><?php echo $users->formatDate($value->created_at);  ?></span></td>
 
                         <td>
@@ -165,7 +172,6 @@ if (isset($username)) {
                           " href="profile.php?id=<?php echo $value->id;?>">View</a>
 
                         <?php } ?>
-
                         </td>
                       </tr>
                     <?php }}else{ ?>
@@ -173,25 +179,8 @@ if (isset($username)) {
                       <td>No user availabe now !</td>
                     </tr>
                     <?php } ?>
-
                   </tbody>
-
               </table>
-
-
-
-
-
-
-
-
-
         </div>
       </div>
-
-
-
-  <?php
-  include 'inc/footer.php';
-
-  ?>
+  <?php include 'inc/footer.php'; ?>
