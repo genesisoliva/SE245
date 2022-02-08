@@ -1,12 +1,9 @@
 <?php
 
-// Class Name: Session
-
-class Session{
-
+class Session {
 
   // Session Start Method
-  public static function init(){
+  public static function init() {
 
     if (version_compare(phpversion(), '5.4.0', '<')) {
       if (session_id() == '') {
@@ -17,18 +14,12 @@ class Session{
         session_start();
       }
     }
-
-
-
   }
-
 
   // Session Set Method
   public static function set($key, $val){
     $_SESSION[$key] = $val;
   }
-
-
 
   // Session Get Method
   public static function get($key){
@@ -46,7 +37,6 @@ class Session{
     header('Location:login.php');
   }
 
-
   // Check Session Method
   public static function CheckSession(){
     if (self::get('login') == FALSE) {
@@ -55,18 +45,11 @@ class Session{
     }
   }
 
-
   // Check Login Method
   public static function CheckLogin(){
     if (self::get("login") == TRUE) {
       header('Location:index.php');
     }
   }
-
-
-
-
-
-
 
 }
