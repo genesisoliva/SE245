@@ -90,6 +90,7 @@ if (isset($activeId)) {
                       <tr class="text-center" <?php if (Session::get("id") == $value->id) { echo "style='background:#d9edf7' ";} ?>>
                         <td><?php echo $value->user_id; ?></td>
                         <td><?php echo $value->user_id; ?></td>
+                        
                         <td><?php echo $value->student_id; ?> <br>
                           <?php if ($value->roleid  == '1'){
                           echo "<span class='badge badge-lg badge-info text-white'>Admin</span>";
@@ -99,6 +100,7 @@ if (isset($activeId)) {
                             echo "<span class='badge badge-lg badge-dark text-white'>User Only</span>";
                         } ?>
                         </td>
+                        
                         <td><?php echo $value->dorm_num; ?></td>
                         <td><?php echo $value->name; ?></td>
                         <td><?php echo $value->first_name; ?></td>
@@ -112,23 +114,22 @@ if (isset($activeId)) {
                         <td>
                           <?php if ($value->isActive == '0') { ?>
                           <span class="badge badge-lg badge-info text-white">Active</span>
-                        <?php }else{ ?>
-                    <span class="badge badge-lg badge-danger text-white">Deactive</span>
-                        <?php } ?>
-                        </td>
+                          <?php }else{ ?>
+                          <span class="badge badge-lg badge-danger text-white">Deactive</span>
+                          <?php } ?>
+                       </td>
                         
-                        <td><span class="badge badge-lg badge-secondary text-white"><?php echo $users->formatDate($value->created_at);  ?></span></td>
+                        <td><span class="badge badge-lg badge-secondary text-white"><?php echo $users->formatDate($value->created_at);?></span></td>
 
                         <td>
                           <?php if ( Session::get("roleid") == '1') {?>
-                            <a class="btn btn-success btn-sm
-                            " href="profile.php?id=<?php echo $value->id;?>">View</a>
+                            <a class="btn btn-success btn-sm" href="profile.php?id=<?php echo $value->id;?>">View</a>
                             <a class="btn btn-info btn-sm " href="profile.php?id=<?php echo $value->id;?>">Edit</a>
                             <a onclick="return confirm('Are you sure To Delete ?')" class="btn btn-danger
-                    <?php if (Session::get("id") == $value->id) {
-                      echo "disabled";
-                    } ?>
-                             btn-sm " href="?remove=<?php echo $value->id;?>">Remove</a>
+                          <?php if (Session::get("id") == $value->id) {
+                            echo "disabled";
+                          }?>
+                             btn-sm" href="?remove=<?php echo $value->id;?>">Remove</a>
 
                              <?php if ($value->isActive == '0') {  ?>
                                <a onclick="return confirm('Are you sure To Deactive ?')" class="btn btn-warning
