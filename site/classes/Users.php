@@ -1,31 +1,25 @@
+<?php include 'lib/Database.php'; ?>
+<?php include_once 'lib/Session.php'; ?>
 <?php
-
-include 'lib/Database.php';
-include_once 'lib/Session.php';
-
-
 class Users{
-
 
   // Db Property
   private $db;
 
   // Db __construct Method
-  public function __construct(){
+  public function __construct() {
     $this->db = new Database();
   }
 
   // Date formate Method
-   public function formatDate($date){
+   public function formatDate($date) {
      // date_default_timezone_set('Asia/Dhaka');
       $strtime = strtotime($date);
     return date('Y-m-d H:i:s', $strtime);
    }
 
-
-
   // Check Exist Email Address Method
-  public function checkExistEmail($email){
+  public function checkExistEmail($email) {
     $sql = "SELECT email from  tbl_users WHERE email = :email";
     $stmt = $this->db->pdo->prepare($sql);
     $stmt->bindValue(':email', $email);
@@ -37,10 +31,8 @@ class Users{
     }
   }
 
-
-
   // User Registration Method
-  public function userRegistration($data){
+  public function userRegistration($data) {
     $name = $data['name'];
     $username = $data['username'];
     $email = $data['email'];
@@ -93,7 +85,7 @@ class Users{
         return $msg;
     }else{
 
-      $sql = "INSERT INTO tbl_users(name, username, email, password, mobile, roleid) VALUES(:name, :username, :email, :password, :mobile, :roleid)";
+      $sql = "INSERT INTO users (name, username, email, password, mobile, roleid) VALUES(:name, :username, :email, :password, :mobile, :roleid)";
       $stmt = $this->db->pdo->prepare($sql);
       $stmt->bindValue(':name', $name);
       $stmt->bindValue(':username', $username);
@@ -113,18 +105,11 @@ class Users{
   <strong>Error !</strong> Something went Wrong !</div>';
           return $msg;
       }
-
-
-
     }
-
-
-
-
-
-  }
+}
+  
   // Add New User By Admin
-  public function addNewUserByAdmin($data){
+  public function addNewUserByAdmin($data) {
     $name = $data['name'];
     $username = $data['username'];
     $email = $data['email'];
@@ -177,7 +162,7 @@ class Users{
         return $msg;
     }else{
 
-      $sql = "INSERT INTO tbl_users(name, username, email, password, mobile, roleid) VALUES(:name, :username, :email, :password, :mobile, :roleid)";
+      $sql = "INSERT INTO users (name, username, email, password, mobile, roleid) VALUES (:name, :username, :email, :password, :mobile, :roleid)";
       $stmt = $this->db->pdo->prepare($sql);
       $stmt->bindValue(':name', $name);
       $stmt->bindValue(':username', $username);
@@ -197,32 +182,21 @@ class Users{
   <strong>Error !</strong> Something went Wrong !</div>';
           return $msg;
       }
-
-
-
     }
-
-
-
-
-
   }
 
-
-
   // Select All User Method
-  public function selectAllUserData(){
-    $sql = "SELECT * FROM tbl_users ORDER BY id DESC";
+  public function selectAllUserData() {
+    $sql = "SELECT * FROM users ORDER BY id DESC";
     $stmt = $this->db->pdo->prepare($sql);
     $stmt->execute();
     return $stmt->fetchAll(PDO::FETCH_OBJ);
   }
 
-
   // User login Autho Method
-  public function userLoginAutho($email, $password){
+  public function userLoginAutho($email, $password) {
     $password = SHA1($password);
-    $sql = "SELECT * FROM tbl_users WHERE email = :email and password = :password LIMIT 1";
+    $sql = "SELECT * FROM users WHERE email = :email and password = :password LIMIT 1";
     $stmt = $this->db->pdo->prepare($sql);
     $stmt->bindValue(':email', $email);
     $stmt->bindValue(':password', $password);
@@ -231,22 +205,18 @@ class Users{
   }
   // Check User Account Satatus
   public function CheckActiveUser($email){
-    $sql = "SELECT * FROM tbl_users WHERE email = :email and isActive = :isActive LIMIT 1";
+    $sql = "SELECT * FROM users WHERE email = :email and isActive = :isActive LIMIT 1";
     $stmt = $this->db->pdo->prepare($sql);
     $stmt->bindValue(':email', $email);
     $stmt->bindValue(':isActive', 1);
     $stmt->execute();
     return $stmt->fetch(PDO::FETCH_OBJ);
   }
-
-
-
-
+  
     // User Login Authotication Method
-    public function userLoginAuthotication($data){
+    public function userLoginAuthotication($data) {
       $email = $data['email'];
       $password = $data['password'];
-
 
       $checkEmail = $this->checkExistEmail($email);
 
@@ -297,17 +267,12 @@ class Users{
     <strong>Error !</strong> Email or Password did not Matched !</div>';
             return $msg;
         }
-
       }
-
-
     }
 
-
-
     // Get Single User Information By Id Method
-    public function getUserInfoById($userid){
-      $sql = "SELECT * FROM tbl_users WHERE id = :id LIMIT 1";
+    public function getUserInfoById($userid) {
+      $sql = "SELECT * FROM users WHERE id = :id LIMIT 1";
       $stmt = $this->db->pdo->prepare($sql);
       $stmt->bindValue(':id', $userid);
       $stmt->execute();
@@ -317,21 +282,15 @@ class Users{
       }else{
         return false;
       }
-
-
     }
 
-
-
-  //
   //   Get Single User Information By Id Method
-    public function updateUserByIdInfo($userid, $data){
+    public function updateUserByIdInfo($userid, $data) {
       $name = $data['name'];
       $username = $data['username'];
       $email = $data['email'];
       $mobile = $data['mobile'];
       $roleid = $data['roleid'];
-
 
 
       if ($name == "" || $username == ""|| $email == "" || $mobile == ""  ) {
@@ -358,7 +317,7 @@ class Users{
           return $msg;
       }else{
 
-        $sql = "UPDATE tbl_users SET
+        $sql = "UPDATE users SET
           name = :name,
           username = :username,
           email = :email,
@@ -387,22 +346,13 @@ class Users{
           Session::set('msg', '<div class="alert alert-danger alert-dismissible mt-3" id="flash-msg">
     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
     <strong>Error !</strong> Data not inserted !</div>');
-
-
         }
-
-
       }
-
-
     }
 
-
-
-
     // Delete User by Id Method
-    public function deleteUserById($remove){
-      $sql = "DELETE FROM tbl_users WHERE id = :id ";
+    public function deleteUserById($remove) {
+      $sql = "DELETE FROM users WHERE id = :id ";
       $stmt = $this->db->pdo->prepare($sql);
       $stmt->bindValue(':id', $remove);
         $result =$stmt->execute();
@@ -421,7 +371,7 @@ class Users{
 
     // User Deactivated By Admin
     public function userDeactiveByAdmin($deactive){
-      $sql = "UPDATE tbl_users SET
+      $sql = "UPDATE users SET
 
        isActive=:isActive
        WHERE id = :id";
@@ -448,8 +398,8 @@ class Users{
 
 
     // User Deactivated By Admin
-    public function userActiveByAdmin($active){
-      $sql = "UPDATE tbl_users SET
+    public function userActiveByAdmin($active) {
+      $sql = "UPDATE users SET
        isActive=:isActive
        WHERE id = :id";
 
@@ -470,13 +420,10 @@ class Users{
         }
     }
 
-
-
-
     // Check Old password method
-    public function CheckOldPassword($userid, $old_pass){
+    public function CheckOldPassword($userid, $old_pass) {
       $old_pass = SHA1($old_pass);
-      $sql = "SELECT password FROM tbl_users WHERE password = :password AND id =:id";
+      $sql = "SELECT password FROM users WHERE password = :password AND id =:id";
       $stmt = $this->db->pdo->prepare($sql);
       $stmt->bindValue(':password', $old_pass);
       $stmt->bindValue(':id', $userid);
@@ -487,11 +434,9 @@ class Users{
         return false;
       }
     }
-
-
-
+  
     // Change User pass By Id
-    public  function changePasswordBysingelUserId($userid, $data){
+    public  function changePasswordBysingelUserId($userid, $data) {
 
       $old_pass = $data['old_password'];
       $new_pass = $data['new_password'];
@@ -517,7 +462,7 @@ class Users{
              return $msg;
          }else{
            $new_pass = SHA1($new_pass);
-           $sql = "UPDATE tbl_users SET
+           $sql = "UPDATE users SET
 
             password=:password
             WHERE id = :id";
@@ -542,15 +487,5 @@ class Users{
 
          }
 
-
-
     }
-
-
-
-
-
-
-
-
 }
