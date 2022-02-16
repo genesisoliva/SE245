@@ -34,6 +34,8 @@ CREATE TABLE `staff` (
   KEY `STAFF_EMAIL_FK` (`email`),
   CONSTRAINT `STAFF_EMAIL_FK` FOREIGN KEY (`email`) REFERENCES `login_info` (`email`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
+INSERT INTO `staff` (`staff_id`, `first_name`, `last_name`, `email`, `login_access`) VALUES
+(1, 'staff', 'name', 'staff@swadesh.com', 1);
 
 CREATE TABLE `customers` (
   `customer_id` int(10) PRIMARY KEY NOT NULL AUTO_INCREMENT,
