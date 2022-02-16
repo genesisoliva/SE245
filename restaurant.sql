@@ -22,6 +22,8 @@ CREATE TABLE `admin` (
   CONSTRAINT `ADMIN_EMAIL_FK` FOREIGN KEY (`email`) REFERENCES `login_info` (`email`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
+INSERT INTO `admin` (`admin_id`, `first_name`, `last_name`, `email`) VALUES
+(1, 'John', 'Admin', 'admin@swadesh.com');
 
 CREATE TABLE `staff` (
   `staff_id` int(10) PRIMARY KEY NOT NULL AUTO_INCREMENT,
