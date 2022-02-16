@@ -7,6 +7,12 @@ CREATE TABLE `login_info` (
   PRIMARY KEY (`email`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+INSERT INTO `login_info` (`email`, `password`, `date_added`, `date_modified`) VALUES
+('admin@swadesh.com', 'e10adc3949ba59abbe56e057f20f883e', '2020-03-17 15:24:04', '2020-03-17 15:24:04'),
+('guest@swadesh.com', '', '2019-12-20 15:28:00', '2019-12-20 15:28:00'),
+('staff@swadesh.com', 'e10adc3949ba59abbe56e057f20f883e', '2020-03-05 01:15:49', '2020-03-16 17:20:58'),
+('swadeshrest@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '2020-03-17 19:48:17', '2020-03-17 19:48:17');
+
 CREATE TABLE `admin` (
   `admin_id` int(10) PRIMARY KEY NOT NULL AUTO_INCREMENT,
   `first_name` varchar(30) NOT NULL,
@@ -38,6 +44,9 @@ CREATE TABLE `customers` (
   KEY `CUST_EMAIL_FK` (`email`),
   CONSTRAINT `CUST_EMAIL_FK` FOREIGN KEY (`email`) REFERENCES `login_info` (`email`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
+INSERT INTO `customers` (`customer_id`, `first_name`, `last_name`, `email`, `login_access`, `verify_key`, `isVerified`) VALUES
+(1, 'No', 'Account', 'guest@swadesh.com', 0, NULL, 0),
+(2, 'Swadesh', 'Customer', 'swadeshrest@gmail.com', 1, 'iSYuce4yOPQ7q6NKCdVA', 1);
 
 CREATE TABLE `customer_contact` (
   `address_id` int(10) PRIMARY KEY NOT NULL AUTO_INCREMENT,
