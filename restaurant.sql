@@ -94,7 +94,9 @@ INSERT INTO `categories` (`cat_id`, `cat_title`, `icon_url`, `cat_desc`, `date_a
 (4, 'Rice and Noodles', 'img/icons/noodles.png', 'Fried Rice/Noodles - Ghee/Jeera Rice, Dal Khichdi, Palak, Triple Fried Rice, Chicken items - Chicken Singapore, Chicken Hongkong, Chicken Biryani, Mixed fried rice and more...', '2019-12-21 17:31:20', '2019-12-23 15:13:13'),
 (5, 'Special', 'img/icons/bread.png', 'Roti, Butter Roti, Kulcha, Naan, Parota, Butter naan, Stuffed Naan, Tokri, Mutton items - Mutton Pepper, Mutton Sukka, Mutton Hyderabadi, Mutton Kolhapuri and a lot more.. ', '2019-12-21 17:31:29', '0000-00-00 00:00:00'),
 (6, 'Sea food', 'img/icons/fish.png', 'Fish Masala, Fry, Tawa, Rawa, Naked, Tandoori, Deep Fry, Pomfret, Anjal (King fish), Kane (Lady fish), Nang (Lape fish), Bondas, Crab and much more..', '2019-12-22 12:24:20', '0000-00-00 00:00:00'),
-(1, 'Starters', 'img/icons/chips.png', 'Kebab, Koliwada, Pakodas, Gobi Manchurian, Baby corn, Mushroom/Panner Tikka, Boiled Egg, Omlette, Egg Masala and much more..', '2019-12-21 17:30:30', '2019-12-29 00:26:51');
+(1, 'Starters', 'img/icons/chips.png', 'Kebab, Koliwada, Pakodas, Gobi Manchurian, Baby corn, Mushroom/Panner Tikka, Boiled Egg, Omlette, Egg Masala and much more..', '2019-12-21 17:30:30', '2019-12-29 00:26:51'),
+(7, 'beeers', 'img/icons/chips.png', 'beeers', '2022-02-15 17:30:30', '2022-02-16 00:26:51');
+
 
 
 CREATE TABLE `subcategories` (
