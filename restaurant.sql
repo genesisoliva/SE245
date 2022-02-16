@@ -2,8 +2,8 @@ CREATE TABLE `login_info` (
   `login_info_id` int,
   `email` varchar(96) NOT NULL,
   `password` text NOT NULL,
-  `date_added` datetime NOT NULL,
-  `date_modified` datetime NOT NULL DEFAULT current_timestamp(),
+  `date_added` DATETIME DEFAULT CURRENT_TIMESTAMP,
+  `date_modified` DATETIME ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`email`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -12,6 +12,17 @@ INSERT INTO `login_info` (`email`, `password`, `date_added`, `date_modified`) VA
 ('guest@swadesh.com', '', '2019-12-20 15:28:00', '2019-12-20 15:28:00'),
 ('staff@swadesh.com', 'e10adc3949ba59abbe56e057f20f883e', '2020-03-05 01:15:49', '2020-03-16 17:20:58'),
 ('swadeshrest@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '2020-03-17 19:48:17', '2020-03-17 19:48:17');
+
+CREATE TABLE `login_user_ip` (
+  `id` int PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  `email` varchar(96) NOT NULL,
+  `ip` text NOT NULL,
+  `user_agent` text NOT NULL,
+  `page_accessed` text DEFAULT NULL,
+  `date_accessed` datetime NOT NULL DEFAULT current_timestamp(),
+  KEY `email_2` (`email`),
+  CONSTRAINT `USERIP_EMAIL_FK` FOREIGN KEY (`email`) REFERENCES `login_info` (`email`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=501 DEFAULT CHARSET=latin1;
 
 CREATE TABLE `admin` (
   `admin_id` int(10) PRIMARY KEY NOT NULL AUTO_INCREMENT,
