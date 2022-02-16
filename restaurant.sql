@@ -88,6 +88,15 @@ CREATE TABLE `categories` (
   CONSTRAINT `CAT_ICON_URL_FK` FOREIGN KEY (`icon_url`) REFERENCES `icons` (`icon_url`) ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
+INSERT INTO `categories` (`cat_id`, `cat_title`, `icon_url`, `cat_desc`, `date_added`, `date_modified`) VALUES
+(2, 'Main Course', 'img/icons/chicken.png', 'Chicken Tandoori, Tikka, Kolhapuri, Banjara, Lassuni, Hyderabadi, Dal Fry, Mushroom, Dal tadka, Dum Alu, Butter Masala and many more to choose from..', '2019-12-21 17:30:44', '2019-12-23 00:27:21'),
+(3, 'Sides', 'img/icons/ice.png', 'Fried Papad, Finger chips, Soups - Manchow, Mushroom, Sweet Corn, Hot & Sour, Lung Fung, Desserts - Vanilla, Strawberry, Butter Scotch, Chocolate, Juice - Orange, Pineapple..', '2019-12-21 17:30:58', '0000-00-00 00:00:00'),
+(4, 'Rice and Noodles', 'img/icons/noodles.png', 'Fried Rice/Noodles - Ghee/Jeera Rice, Dal Khichdi, Palak, Triple Fried Rice, Chicken items - Chicken Singapore, Chicken Hongkong, Chicken Biryani, Mixed fried rice and more...', '2019-12-21 17:31:20', '2019-12-23 15:13:13'),
+(5, 'Special', 'img/icons/bread.png', 'Roti, Butter Roti, Kulcha, Naan, Parota, Butter naan, Stuffed Naan, Tokri, Mutton items - Mutton Pepper, Mutton Sukka, Mutton Hyderabadi, Mutton Kolhapuri and a lot more.. ', '2019-12-21 17:31:29', '0000-00-00 00:00:00'),
+(6, 'Sea food', 'img/icons/fish.png', 'Fish Masala, Fry, Tawa, Rawa, Naked, Tandoori, Deep Fry, Pomfret, Anjal (King fish), Kane (Lady fish), Nang (Lape fish), Bondas, Crab and much more..', '2019-12-22 12:24:20', '0000-00-00 00:00:00'),
+(1, 'Starters', 'img/icons/chips.png', 'Kebab, Koliwada, Pakodas, Gobi Manchurian, Baby corn, Mushroom/Panner Tikka, Boiled Egg, Omlette, Egg Masala and much more..', '2019-12-21 17:30:30', '2019-12-29 00:26:51');
+
+
 CREATE TABLE `subcategories` (
   `sub_cat_id` int(10) NOT NULL AUTO_INCREMENT,
   `cat_id` int(10) NOT NULL,
