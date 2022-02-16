@@ -63,6 +63,18 @@ CREATE TABLE `icons` (
   UNIQUE KEY `icon_url` (`icon_url`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
+INSERT INTO `icons` (`id`, `icon_title`, `icon_url`) VALUES
+(1, 'bread', 'img/icons/bread.png'),
+(2, 'chicken', 'img/icons/chicken.png'),
+(3, 'chips', 'img/icons/chips.png'),
+(4, 'egg', 'img/icons/egg.png'),
+(5, 'fish', 'img/icons/fish.png'),
+(6, 'ice', 'img/icons/ice.png'),
+(7, 'juice', 'img/icons/juice.png'),
+(8, 'noodles', 'img/icons/noodles.png'),
+(9, 'soup', 'img/icons/soup.png'),
+(10, 'veg', 'img/icons/veg.png');
+
 CREATE TABLE `categories` (
   `cat_id` int(10) NOT NULL AUTO_INCREMENT,
   `cat_title` varchar(30) NOT NULL,
