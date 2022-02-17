@@ -8,10 +8,10 @@ CREATE TABLE `login_info` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `login_info` (`email`, `password`, `date_added`) VALUES
-('admin@swadesh.com', 'e10adc3949ba59abbe56e057f20f883e', '2022-02-17 19:36:18'),
-('guest@swadesh.com', '', '2022-02-17 19:36:18'),
-('staff@swadesh.com', 'e10adc3949ba59abbe56e057f20f883e', '2022-02-17 19:36:18'),
-('swadeshrest@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '2022-02-17 19:36:18');
+('admin@swadesh.com', 'e10adc3949ba59abbe56e057f20f883e', current_timestamp()),
+('guest@swadesh.com', '', current_timestamp()),
+('staff@swadesh.com', 'e10adc3949ba59abbe56e057f20f883e', current_timestamp()),
+('swadeshrest@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', current_timestamp());
 
 CREATE TABLE `login_user_ip` (
   `id` int PRIMARY KEY NOT NULL AUTO_INCREMENT,
