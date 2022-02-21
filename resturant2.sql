@@ -1,5 +1,5 @@
 CREATE TABLE `login_credentials` ( 
-  `login_credentials_id` int,
+  `login_credential_id` int,
   `email` varchar(96) NOT NULL,
   `password` text NOT NULL,
   `date_added` DATETIME DEFAULT CURRENT_TIMESTAMP,
