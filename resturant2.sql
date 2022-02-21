@@ -100,19 +100,19 @@ INSERT INTO `icons` (`id`, `icon_title`, `icon_url`) VALUES
 (10, 'veg', 'img/icons/veg.png');
 
 CREATE TABLE `categories` (
-  `cat_id` int(10) NOT NULL AUTO_INCREMENT,
-  `cat_title` varchar(30) NOT NULL,
+  `category_id` int(10) NOT NULL AUTO_INCREMENT,
+  `category_title` varchar(30) NOT NULL,
   `icon_url` varchar(50) NOT NULL,
-  `cat_desc` text DEFAULT NULL,
+  `category_description` text DEFAULT NULL,
   `date_added` DATETIME DEFAULT CURRENT_TIMESTAMP,
   `date_modified` DATETIME ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`cat_id`) USING BTREE,
-  UNIQUE KEY `cat_title` (`cat_title`),
-  KEY `CAT_ICON_URL_FK` (`icon_url`),
-  CONSTRAINT `CAT_ICON_URL_FK` FOREIGN KEY (`icon_url`) REFERENCES `icons` (`icon_url`) ON UPDATE CASCADE
+  PRIMARY KEY (`category_id`) USING BTREE,
+  UNIQUE KEY `category_title` (`cat_title`),
+  KEY `FK_CATEGORY_ICON_URL` (`icon_url`),
+  CONSTRAINT `FK_CATEGORY_ICON_URL` FOREIGN KEY (`icon_url`) REFERENCES `icons` (`icon_url`) ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
-INSERT INTO `categories` (`cat_id`, `cat_title`, `icon_url`, `cat_desc`, `date_added`, `date_modified`) VALUES
+INSERT INTO `categories` (`category_id`, `category_title`, `icon_url`, `category_description`, `date_added`, `date_modified`) VALUES
 (2, 'Main Course', 'img/icons/chicken.png', 'Chicken Tandoori, Tikka, Kolhapuri, Banjara, Lassuni, Hyderabadi, Dal Fry, Mushroom, Dal tadka, Dum Alu, Butter Masala and many more to choose from..', '2019-12-21 17:30:44', '2019-12-23 00:27:21'),
 (3, 'Sides', 'img/icons/ice.png', 'Fried Papad, Finger chips, Soups - Manchow, Mushroom, Sweet Corn, Hot & Sour, Lung Fung, Desserts - Vanilla, Strawberry, Butter Scotch, Chocolate, Juice - Orange, Pineapple..', '2019-12-21 17:30:58', '0000-00-00 00:00:00'),
 (4, 'Rice and Noodles', 'img/icons/noodles.png', 'Fried Rice/Noodles - Ghee/Jeera Rice, Dal Khichdi, Palak, Triple Fried Rice, Chicken items - Chicken Singapore, Chicken Hongkong, Chicken Biryani, Mixed fried rice and more...', '2019-12-21 17:31:20', '2019-12-23 15:13:13'),
