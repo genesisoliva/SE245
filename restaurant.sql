@@ -1,5 +1,4 @@
 CREATE TABLE `login_info` ( 
-  `login_info_id` int,
   `email` varchar(96) NOT NULL,
   `password` text NOT NULL,
   `date_added` DATETIME DEFAULT CURRENT_TIMESTAMP,
@@ -151,7 +150,7 @@ CREATE TABLE `items` (
   KEY `ITEM_SUB_CATID_FK` (`sub_cat_id`),
   CONSTRAINT `ITEM_CATID_FK` FOREIGN KEY (`cat_id`) REFERENCES `categories` (`cat_id`),
   CONSTRAINT `ITEM_SUB_CATID_FK` FOREIGN KEY (`sub_cat_id`) REFERENCES `subcategories` (`sub_cat_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=301 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
 CREATE TABLE `cart` (
   `cart_id` int(10) NOT NULL AUTO_INCREMENT,
@@ -162,7 +161,7 @@ CREATE TABLE `cart` (
   PRIMARY KEY (`cart_id`),
   UNIQUE KEY `email` (`email`,`session_id`),
   CONSTRAINT `CART_EMAIL_FK` FOREIGN KEY (`email`) REFERENCES `customers` (`email`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=201 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
 CREATE TABLE `cart_items` (
   `cart_items_id` int(10) NOT NULL AUTO_INCREMENT,
@@ -205,7 +204,7 @@ CREATE TABLE `order_payment` (
   PRIMARY KEY (`order_payment_id`,`checksumhash`,`txnid`) USING BTREE,
   KEY `ORD_PAY_ORDID_FK` (`order_id`),
   CONSTRAINT `ORD_PAY_ORDID_FK` FOREIGN KEY (`order_id`) REFERENCES `orders_received` (`order_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=501 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
 CREATE TABLE `ordered_products` (
   `op_id` int(11) NOT NULL AUTO_INCREMENT,
@@ -217,5 +216,5 @@ CREATE TABLE `ordered_products` (
   KEY `order_id` (`order_id`),
   CONSTRAINT `ORD_PROD_ITEMID_FK` FOREIGN KEY (`item_id`) REFERENCES `items` (`item_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `ORD_PROD_ORDID_FK` FOREIGN KEY (`order_id`) REFERENCES `orders_received` (`order_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=1501 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
