@@ -7,9 +7,9 @@ CREATE TABLE `login_info` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `login_info` (`email`, `password`, `date_added`) VALUES
-('admin@swadesh.com', 'e10adc3949ba59abbe56e057f20f883e', current_timestamp()),
-('guest@swadesh.com', '', current_timestamp()),
-('staff@swadesh.com', 'e10adc3949ba59abbe56e057f20f883e', current_timestamp()),
+('admin@email.com', 'e10adc3949ba59abbe56e057f20f883e', current_timestamp()),
+('guest@email.com', '', current_timestamp()),
+('staff@email.com', 'e10adc3949ba59abbe56e057f20f883e', current_timestamp()),
 ('swadeshrest@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', current_timestamp());
 
 CREATE TABLE `login_user_ip` (
